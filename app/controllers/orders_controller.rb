@@ -16,15 +16,15 @@ class OrdersController < ApplicationController
         
     def show
         @order = Order.find(params[:id])
-        @order_total = 0
+        # @order_total = 0
 
-        @order.carted_products.each do |carted_product|
-            quantity = carted_product.amount
-            price = carted_product.product.price
+        # @order.carted_products.each do |carted_product|
+        #     quantity = carted_product.amount
+        #     price = carted_product.product.price
 
-            total_price = quantity * price
-            @order_total += total_price
-        end
+        #     total_price = quantity * price
+        #     @order_total += total_price
+        # end
     end
        
 

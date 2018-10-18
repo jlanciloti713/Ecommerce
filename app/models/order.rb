@@ -1,17 +1,16 @@
 class Order < ApplicationRecord
     has_many :carted_products
 
-    # def total
-    #     @order = Order.find(params[:id])
-    #     @order_total = 0
+    def total
+        order_total = 0
 
-    #     @order.carted_products.each do |carted_product|
-    #     quantity = carted_product.amount
-    #     price = carted_product.product.price
+        carted_products.each do |carted_product|
+            quantity = carted_product.amount
+            price = carted_product.product.price
 
-    #     total_price = quantity * price
-    #     @order_total += total_price
-    #     end
-    #     return order_total
-    # end
+            total_price = quantity * price
+            order_total += total_price
+        end
+        return order_total
+    end
 end
