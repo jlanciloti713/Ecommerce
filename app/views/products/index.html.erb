@@ -1,0 +1,15 @@
+
+<h1 id="title">Buy Yourself Some time</h1>
+<h3><%= link_to("Create New Product", "/products/new") %></h3>
+
+<% @products.each do |product| %>
+    <%=link_to("/products/#{product.id}") do %>
+        <div>
+            <h1><%= product.name %></h1>
+            <%= image_tag(product.image_url, id: "picture") %>
+            <p>Click For More Details!</p>
+        </div>
+    <% end %>
+        
+
+<% end %>

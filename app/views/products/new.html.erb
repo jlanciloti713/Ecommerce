@@ -1,0 +1,37 @@
+<h1>Add a New Item</h1>
+
+<%= form_tag("/products", method: :post) do %>
+
+<label for="name">Enter Product Name:</label>
+<br>
+<input type="text" id ="name" name="name" placeholder="Product Name">
+<br>
+<label for="price">How Much:</label>
+<br>
+<input type="number" name="price" placeholder="Name Your Price">
+<br>
+<label for="image">Add a Picture</label>
+<br>
+<input type="text" name="image_url" placeholder="Don't Forget a Picture!">
+<br>
+<label for="description">Put Description:</label>
+<br>
+<textarea type="text" id ="description" name="description" placeholder="Product Information" cols = "60" rows = "20" style="resize: none"></textarea>
+<br>
+<input type="submit" value="Submit">
+
+<% end %>
+
+<%= link_to("Forget about it", "/products") %>
+
+
+
+
+
+<!-- 
+<%= text_field_tag(:name)%>
+<%= number_field_tag(:price)%>
+<%= text_area_tag(:description, "", placeholder: "Enter Text Here") %>
+<%= text_field_tag(:image_url) %>  interpelate is converting to string concatanate is adding to a string
+command shift F to find in any file command shift R to hard refresh page
+-->
