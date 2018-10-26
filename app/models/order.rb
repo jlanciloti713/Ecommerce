@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
     has_many :carted_products
 
+
     def total
         order_total = 0
 

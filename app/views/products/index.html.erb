@@ -1,7 +1,17 @@
 
 <h1 id="title">Buy Yourself Some time</h1>
 <h3><%= link_to("Create New Product", "/products/new") %></h3>
+<h3><%= link_to("Display All", "/products") %></h3>
+<%= form_tag("/", method: :get) do %>
+<input type="text" name="category" value="<% params[:category] %>">
+<input type="submit" value="Search for topic">
+<% end %>
 
+<% if @category_name %>
+<p>Displaying <%= @products.length %> result(s)</p>
+<% elsif @error_message %>
+<p><%= @error_message %></p>
+<% end %>
 <% @products.each do |product| %>
     <%=link_to("/products/#{product.id}") do %>
         <div>

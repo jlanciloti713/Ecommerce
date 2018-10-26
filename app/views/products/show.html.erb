@@ -1,6 +1,17 @@
 <h1 id="product-title">Product Details</h1>
 <%= link_to("Back to Home", "/products") %>
 
+<% if @carted_product.errors.any? %>
+    <div id="error-explanation">
+      <h2><%= pluralize(@carted_product.errors.count, "error") %> prevented this Product from being added to the cart:</h2>
+      <ul> 
+        <% @carted_product.errors.full_messages.each do |message|%>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
 <h2><%= @product.name %></h2>
 <%= image_tag("#{@product.image_url}", id: "picture") %>
 <p id="product-description"><%= @product.description %></p>

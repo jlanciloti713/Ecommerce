@@ -11,6 +11,9 @@
 
   <body>
     <%= link_to("See What's Inside", "/carted_products") %>
+    <% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, id: key %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
