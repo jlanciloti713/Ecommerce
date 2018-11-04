@@ -1,10 +1,15 @@
 class CartedProductsController < ApplicationController
+    before_action :authenticate_user! 
+    def index
+        @carted_products = current_user.products_in_cart
+    end
 
     def create
         @carted_product = CartedProduct.new(
 
                                             amount: params[:amount],
                                             product_id: params[:product_id],
+                                            user_id: current_user.id,
                                             is_purchased: false,
                                             is_removed: false
                                          )
@@ -18,10 +23,6 @@ class CartedProductsController < ApplicationController
     
     end
 
-    def index
-        @carted_products = CartedProduct.where(is_removed: false, is_purchased: false)
-       
-    end
 
     def update
         @carted_product = CartedProduct.find(params[:id])

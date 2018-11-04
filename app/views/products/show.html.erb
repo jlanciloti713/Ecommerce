@@ -17,9 +17,12 @@
 <p id="product-description"><%= @product.description %></p>
 <p id="product-price">$<%= @product.price %>.00</p>
 <br>
-<%= link_to("Edit Product", "/products/#{@product.id}/edit") %>
-<br>
-<%= link_to("Delete Item", "/products/#{@product.id}", method: :delete) %>
+
+<% if user_signed_in? && current_user.admin? %>
+    <%= link_to("Edit Product", "/products/#{@product.id}/edit") %>
+    <br>
+    <%= link_to("Delete Item", "/products/#{@product.id}", method: :delete) %>
+<% end %>
 <h3>Add to Cart</h3>
 <%=form_tag("/carted_products", method: :post) do%>
 <input type="number" name="amount" placeholder="Amount">

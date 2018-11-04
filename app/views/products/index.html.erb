@@ -1,6 +1,9 @@
 
-<h1 id="title">Buy Yourself Some time</h1>
-<h3><%= link_to("Create New Product", "/products/new") %></h3>
+<h1>Buy Yourself Some time</h1>
+<% if user_signed_in? && current_user.admin? %>
+    <h3><%= link_to("Create New Product", "/products/new") %></h3>
+<% end %>
+
 <h3><%= link_to("Display All", "/products") %></h3>
 <%= form_tag("/", method: :get) do %>
 <input type="text" name="category" value="<% params[:category] %>">
@@ -12,14 +15,23 @@
 <% elsif @error_message %>
 <p><%= @error_message %></p>
 <% end %>
-<% @products.each do |product| %>
-    <%=link_to("/products/#{product.id}") do %>
-        <div>
-            <h1><%= product.name %></h1>
-            <%= image_tag(product.image_url, id: "picture") %>
-            <p>Click For More Details!</p>
-        </div>
-    <% end %>
-        
 
-<% end %>
+<div>
+  
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-sm-4">
+        <%=link_to("/products/#{product.id}") do %>
+            <div>
+                <h1><%= product.name %></h1>
+                <%= image_tag(product.image_url, id: "picture") %>
+                <p>Click For More Details!</p>
+            </div>
+        <% end %>
+      </div>
+
+    <% end %>
+  </div>
+   
+  
+</div>

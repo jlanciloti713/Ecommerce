@@ -1,6 +1,6 @@
 <%= link_to("Go Back Home", "/products") %>
 <h1>Your Future Parts</h1>
-    
+ 
 <% @carted_products.each do |carted_product| %>
     <div>
         <h3><%= carted_product.product.name %></h3>
@@ -10,6 +10,7 @@
         <%= link_to("Remove From Cart", "/carted_products/#{carted_product.id}", method: :put) %>
     </div>
 <% end %>
+
 
     
 

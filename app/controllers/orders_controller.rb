@@ -1,13 +1,13 @@
 class OrdersController < ApplicationController
-    
+    before_action :authenticate_user! 
     def index
-        @orders = Order.all
+        @orders = current_user.orders
     end
         
 
 
     def create
-        products_in_cart = CartedProduct.where(is_removed: false, is_purchased: false)
+        products_in_cart = CartedProduct.where(is_removed: false, is_purchased: false, user_id: current_user.id)
         
 
         if products_in_cart.any?
